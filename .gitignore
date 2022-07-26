@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Folders
+build/
+.cache
+
+# Environment files
+.clang-format
+compile_commands.json
