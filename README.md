@@ -18,15 +18,15 @@ To begin installation, you first clone the git repository.
 git clone https://github.com/DanielContreras/SDL2-Game && cd SDL2-Game
 ```
 After cloning we build the project
-```
+```shell
 cmake -B build && build --build build/
 ```
 From here, anytime we wish to build the project going forward, we can simply run
-```
+```shell
 cmake --build build/
 ```
 This will create an executable that can be found in the `build/bin/debug` folder and will be called `App`. You can run the executable by running
-```
+```shell
 ./build/bin/debug/App
 ```
 
