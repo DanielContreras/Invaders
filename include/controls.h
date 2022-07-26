@@ -10,7 +10,7 @@
 class Controls {
   // TODO: implement controls
  public:
-   // bool HandleInput(RenderWindow& window, Simulation& simulation)
+  // bool HandleInput(RenderWindow& window, Simulation& simulation)
   bool HandleInput(RenderWindow& window, System& system);
 };
 
