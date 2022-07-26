@@ -35,6 +35,9 @@
 build/
 .cache
 
+# builds
+Makefile
+
 # Environment files
 .clang-format
 compile_commands.json
