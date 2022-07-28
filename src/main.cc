@@ -20,10 +20,6 @@ int main(int argc, char* args[]) {
   RenderWindow window("GAME v0.0.1", 1280, 720);
   spdlog::info("Current refresh rate: {}", window.GetRefreshRate());
 
-  SDL_Texture* grass_texture = window.LoadTexture("res/gfx/ground_grass_1.png");
-
-  Entity entity = Entity(0, 0, grass_texture);
-
   bool game_running = true;
 
   SDL_Event event;
@@ -49,7 +45,7 @@ int main(int argc, char* args[]) {
     // const float alpha = accumulator / time_step;
     // Get our controls and events
     window.Clear();
-    window.Render(entity);
+    window.Render();
     window.Display();
 
     int frame_ticks = SDL_GetTicks() - start_ticks;
