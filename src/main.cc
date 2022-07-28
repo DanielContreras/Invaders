@@ -1,58 +1,52 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_log.h>
+#include <SDL2/SDL_timer.h>
 
-#include <vector>
+#include <exception>
+#include <iostream>
 
-#include "render_window.h"
+#include "sdlwrap/sdlwrap.h"
 #include "spdlog/spdlog.h"
 #include "utils.h"
 
 int main(int argc, char* args[]) {
-  if (SDL_Init(SDL_INIT_VIDEO) > 0)
-    SDL_Log("SDL_Init has failed. Error: %s", SDL_GetError());
+  try {
+    SDLWrap::SDL sdl(SDL_INIT_VIDEO);
+    SDLWrap::Window window("GAME v0.0.1", 1280, 720, SDL_WINDOW_SHOWN);
+    SDLWrap::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    spdlog::info("Current refresh rate: {}", window.GetRefreshRate());
 
-  if (!(IMG_Init(IMG_INIT_PNG)))
-    SDL_Log("IMG_init has failed. Error: %s", SDL_GetError());
+    bool app_running = true;
 
-  RenderWindow window("GAME v0.0.1", 1280, 720);
-  spdlog::info("Current refresh rate: {}", window.GetRefreshRate());
+    SDL_Event event;
 
-  bool game_running = true;
+    utils::Timestep dt(0.01f, 0.0f);
 
-  SDL_Event event;
-
-  // time_step is refresh rate (0.01 is 100 fps)
-  const float time_step = 0.01f;
-  // This is the counter in between steps
-  float accumulator = 0.0f;
-  float current_time = utils::HireTimeInSeconds();
-
-  while (game_running) {
-    int start_ticks = SDL_GetTicks();
-    float new_time = utils::HireTimeInSeconds();
-    float frame_time = new_time - current_time;
-    current_time = new_time;
-    accumulator += frame_time;
-    while (accumulator >= time_step) {
-      while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) game_running = false;
+    while (app_running) {
+      dt.start();
+      while (dt.GetAccumulator() >= dt.GetTimeStep()) {
+        while (SDL_PollEvent(&event)) {
+          if (event.type == SDL_QUIT) app_running = false;
+        }
+        dt.SetAccumulator(dt.GetAccumulator() - dt.GetTimeStep());
       }
-      accumulator -= time_step;
-    }
-    // const float alpha = accumulator / time_step;
-    // Get our controls and events
-    window.Clear();
-    window.Render();
-    window.Display();
+      // const float alpha = accumulator / time_step;
+      // Get our controls and events
+      renderer.Clear();
+      renderer.Copy();
+      renderer.Present();
 
-    int frame_ticks = SDL_GetTicks() - start_ticks;
-    if (frame_ticks < 1000 / window.GetRefreshRate()) {
-      SDL_Delay(1000 / window.GetRefreshRate() - frame_ticks);
+      // int frame_ticks = SDL_GetTicks() - start_ticks;
+      dt.SetFrameTicks(SDL_GetTicks() - dt.GetStartTicks());
+      // if (frame_ticks < 1000 / window.GetRefreshRate()) {
+      //   SDL_Delay(1000 / window.GetRefreshRate() - frame_ticks);
+      // }
+      // fps = (frame_time > 0) ? 1000.0f / frame_time : 0.0f;
+      if (dt.GetFrameTicks() < 1000 / window.GetRefreshRate()) {
+        SDL_Delay(1000 / window.GetRefreshRate() - dt.GetFrameTicks());
+      }
+      spdlog::info("Current refresh rate: {}", dt.GetFPS());
     }
+    return 0;
+  } catch (std::exception& e) {
+    std::cerr << e.what() << std::endl;
   }
-
-  window.CleanUp();
-  SDL_Quit();
-
-  return 0;
 }
