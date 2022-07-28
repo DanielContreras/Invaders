@@ -1,11 +1,8 @@
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include <SDL2/SDL_log.h>
-#include <SDL2/SDL_timer.h>
 
 #include <vector>
 
-#include "entity.h"
 #include "render_window.h"
 #include "spdlog/spdlog.h"
 #include "utils.h"
