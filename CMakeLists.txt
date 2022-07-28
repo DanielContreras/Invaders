@@ -16,7 +16,7 @@ SET(GCC_COVERAGE_LINK_FLAGS    "-lSDL2main -lSDL2 -lSDL2_image")
  SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
  # Add all .cc and .h files inside the src/ folder to ${SOURCE_FILES}
-file(GLOB SOURCE_FILES "src/*.cc" "src/.h")
+file(GLOB SOURCE_FILES "src/*.cc" "src/sdlwrap/*.cc")
 
 # Add header files (-I include)
 include_directories(include)
