@@ -28,22 +28,16 @@ int main(int argc, char* args[]) {
         }
         dt.SetAccumulator(dt.GetAccumulator() - dt.GetTimeStep());
       }
-      // const float alpha = accumulator / time_step;
       // Get our controls and events
       renderer.Clear();
       renderer.Copy();
       renderer.Present();
 
-      // int frame_ticks = SDL_GetTicks() - start_ticks;
       dt.SetFrameTicks(SDL_GetTicks() - dt.GetStartTicks());
-      // if (frame_ticks < 1000 / window.GetRefreshRate()) {
-      //   SDL_Delay(1000 / window.GetRefreshRate() - frame_ticks);
-      // }
-      // fps = (frame_time > 0) ? 1000.0f / frame_time : 0.0f;
       if (dt.GetFrameTicks() < 1000 / window.GetRefreshRate()) {
         SDL_Delay(1000 / window.GetRefreshRate() - dt.GetFrameTicks());
       }
-      spdlog::info("Current refresh rate: {}", dt.GetFPS());
+      // spdlog::info("Current refresh rate: {}", dt.GetFPS());
     }
     return 0;
   } catch (std::exception& e) {
