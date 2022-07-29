@@ -3,7 +3,6 @@
 
 #include "log.h"
 #include "sdlwrap/sdlwrap.h"
-#include <spdlog/spdlog.h>
 #include "utils.h"
 
 int main(int argc, char* args[]) {
