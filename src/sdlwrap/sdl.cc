@@ -1,19 +1,17 @@
 #include "sdlwrap/sdl.h"
 
-// #include "spdlog/spdlog.h"
+#include "log.h"
 
 namespace SDLWrap {
 
 SDL::SDL(Uint32 flags) {
-  if (SDL_Init(flags) != 0) {
-    // spdlog::error("SDL_Init has failed. Error: {}", SDL_GetError());
-  }
-  // spdlog::info("SDL successfully initialized");
+  if (SDL_Init(flags) != 0) CORE_ERROR("SDL_Init has failed. Error: {}", SDL_GetError());
+  CORE_DEBUG("SDL successfully initialized");
 }
 
 SDL::~SDL() {
   SDL_Quit();
-  // spdlog::info("SDL successfully destroyed");
+  CORE_DEBUG("SDL successfully destroyed");
 }
 
 }  // namespace SDLWrap

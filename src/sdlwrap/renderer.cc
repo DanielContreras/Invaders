@@ -1,21 +1,21 @@
 #include "sdlwrap/renderer.h"
 
+#include "log.h"
 #include "sdlwrap/window.h"
-// #include "spdlog/spdlog.h"
 
 namespace SDLWrap {
 
 Renderer::Renderer(Window& window, int index, Uint32 flags) : renderer_(nullptr) {
   renderer_ = SDL_CreateRenderer(window.Get(), index, flags);
-  if (renderer_ == nullptr) {
-    // spdlog::error("Renderer failed to init. Error {}", SDL_GetError());
-  }
-  // spdlog::info("Renderer successfully initialized");
+  if (renderer_ == nullptr) CORE_ERROR("Renderer failed to init. Error {}", SDL_GetError());
+  CORE_DEBUG("Renderer successfully initialized");
 }
 
 Renderer::~Renderer() {
-  if (renderer_ != nullptr) SDL_DestroyRenderer(renderer_);
-  // spdlog::info("Renderer successfully destroyed");
+  if (renderer_ != nullptr) {
+    SDL_DestroyRenderer(renderer_);
+    CORE_DEBUG("Renderer successfully destroyed");
+  }
 }
 
 SDL_Renderer* Renderer::Get() const { return renderer_; }

@@ -2,21 +2,21 @@
 
 #include <SDL2/SDL_error.h>
 
-// #include "spdlog/spdlog.h"
+#include "log.h"
 
 namespace SDLWrap {
 
 Window::Window(const char* title, int w, int h, Uint32 flags) : window_(nullptr) {
   window_ = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
-  if (window_ == nullptr) {
-    // spdlog::error("Window failed to init. Error {}", SDL_GetError());
-  }
-  // spdlog::info("Window successfully initialized");
+  if (window_ == nullptr) CORE_ERROR("Window failed to init. Error {}", SDL_GetError());
+  CORE_DEBUG("Window successfully initialized");
 }
 
 Window::~Window() {
-  if (window_ != nullptr) SDL_DestroyWindow(window_);
-  // spdlog::info("Window successfully destroyed");
+  if (window_ != nullptr) {
+    SDL_DestroyWindow(window_);
+    CORE_DEBUG("Window successfully destroyed");
+  } 
 }
 
 SDL_Window* Window::Get() const { return window_; }
