@@ -19,7 +19,7 @@ class Logger {
 
 #define CORE_TRACE(...) ::Poopy::Logger::GetCoreLogger()->trace(__VA_ARGS__)
 #define CORE_INFO(...)  ::Poopy::Logger::GetCoreLogger()->info(__VA_ARGS__)
-#define CORE_DEBUG(...)  ::Poopy::Logger::GetCoreLogger()->debug(__VA_ARGS__)
+#define CORE_DEBUG(...) ::Poopy::Logger::GetCoreLogger()->debug(__VA_ARGS__)
 #define CORE_WARN(...)  ::Poopy::Logger::GetCoreLogger()->warn(__VA_ARGS__)
 #define CORE_ERROR(...) ::Poopy::Logger::GetCoreLogger()->error(__VA_ARGS__)
 #define CORE_FATAL(...) ::Poopy::Logger::GetCoreLogger()->fatal(__VA_ARGS__)

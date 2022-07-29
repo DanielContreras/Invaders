@@ -13,7 +13,6 @@ int main(int argc, char* args[]) {
     SDLWrap::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     CORE_INFO("Window refresh rate: {}", window.GetRefreshRate());
 
-
     bool app_running = true;
 
     SDL_Event event;

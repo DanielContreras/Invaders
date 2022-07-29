@@ -13,4 +13,4 @@ void Logger::Init() {
   core_logger_->set_level(spdlog::level::trace);
 }
 
-}  // namespace App
+}  // namespace Poopy

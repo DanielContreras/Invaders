@@ -16,7 +16,7 @@ Window::~Window() {
   if (window_ != nullptr) {
     SDL_DestroyWindow(window_);
     CORE_DEBUG("Window successfully destroyed");
-  } 
+  }
 }
 
 SDL_Window* Window::Get() const { return window_; }
