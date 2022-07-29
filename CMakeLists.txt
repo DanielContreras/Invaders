@@ -19,7 +19,7 @@ SET(GCC_COVERAGE_LINK_FLAGS    "-lSDL2main -lSDL2 -lSDL2_image")
 file(GLOB SOURCE_FILES "src/*.cc" "src/sdlwrap/*.cc")
 
 # Add header files (-I include)
-include_directories(include)
+include_directories(include dep/spdlog/include)
 
 # Add executable target
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} )
