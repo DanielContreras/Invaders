@@ -6,7 +6,7 @@
 namespace SDLWrap {
 
 Renderer::Renderer(Window& window, int index, Uint32 flags) : renderer_(nullptr) {
-  renderer_ = SDL_CreateRenderer(window.Get(), index, flags);
+  renderer_ = SDL_CreateRenderer(window.GetWindow(), index, flags);
   if (renderer_ == nullptr) CORE_ERROR("Renderer failed to init. Error {}", SDL_GetError());
   CORE_DEBUG("Renderer successfully initialized");
 }
@@ -18,7 +18,7 @@ Renderer::~Renderer() {
   }
 }
 
-SDL_Renderer* Renderer::Get() const { return renderer_; }
+SDL_Renderer* Renderer::GetRenderer() const { return renderer_; }
 
 Renderer& Renderer::Clear() {
   SDL_RenderClear(renderer_);

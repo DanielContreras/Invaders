@@ -4,6 +4,7 @@
 #include "log.h"
 #include "sdlwrap/sdlwrap.h"
 #include "utils.h"
+#include "temp.h"
 
 int main(int argc, char* args[]) {
   Poopy::Logger::Init();
@@ -36,7 +37,7 @@ int main(int argc, char* args[]) {
       if (dt.GetFrameTicks() < 1000 / window.GetRefreshRate()) {
         SDL_Delay(1000 / window.GetRefreshRate() - dt.GetFrameTicks());
       }
-      // CORE_DEBUG("Current refresh rate: {}", dt.GetFPS() / 1000);
+      // CORE_DEBUG("FPS: {}", dt.GetFPS() / 1000);
     }
     return 0;
   } catch (std::exception& e) {

@@ -8,18 +8,18 @@
 namespace SDLWrap {
 
 class Renderer {
- private:
-  SDL_Renderer* renderer_;
-
  public:
   Renderer(Window& window, int index, Uint32 flags);
   virtual ~Renderer();
 
-  SDL_Renderer* Get() const;
+  SDL_Renderer* GetRenderer() const;
 
   Renderer& Clear();
   Renderer& Copy();
   Renderer& Present();
+
+ private:
+  SDL_Renderer* renderer_;
 };
 
 }  // namespace SDLWrap

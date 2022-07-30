@@ -12,15 +12,6 @@ inline float HireTimeInSeconds() {
 }
 
 class Timestep {
- private:
-  float time_step_;
-  float accumulator_;
-  float current_time_;
-  int start_ticks_;
-  float new_time_;
-  float frame_time_;
-  int frame_ticks_;
-
  public:
   inline Timestep(float time_step, float accumulator) {
     time_step_ = time_step;
@@ -50,6 +41,15 @@ class Timestep {
   inline void SetNewTime(float new_time) { new_time_ = new_time; }
   inline void SetFrameTime(float frame_time) { frame_time_ = frame_time; }
   inline void SetFrameTicks(float frame_ticks) { frame_ticks_ = frame_ticks; }
+
+ private:
+  float time_step_;
+  float accumulator_;
+  float current_time_;
+  int start_ticks_;
+  float new_time_;
+  float frame_time_;
+  int frame_ticks_;
 };
 
 }  // namespace utils

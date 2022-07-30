@@ -19,7 +19,7 @@ Window::~Window() {
   }
 }
 
-SDL_Window* Window::Get() const { return window_; }
+SDL_Window* Window::GetWindow() const { return window_; }
 
 int Window::GetRefreshRate() {
   int display_index = SDL_GetWindowDisplayIndex(window_);
