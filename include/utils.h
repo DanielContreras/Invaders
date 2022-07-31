@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-namespace Utils {
+namespace utils {
 
 class LTimer {
  public:

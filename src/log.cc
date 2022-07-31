@@ -3,7 +3,7 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 
-namespace Poopy {
+namespace poopy {
 
 std::shared_ptr<spdlog::logger> Logger::core_logger_;
 
@@ -13,4 +13,4 @@ void Logger::Init() {
   core_logger_->set_level(spdlog::level::trace);
 }
 
-}  // namespace Poopy
+}  // namespace poopy

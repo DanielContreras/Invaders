@@ -14,7 +14,7 @@ const int SCREEN_FPS = 100;
 const int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
 
 int main(int argc, char* args[]) {
-  Poopy::Logger::Init();
+  poopy::Logger::Init();
   try {
     SDLWrap::SDL sdl(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     SDLWrap::Window window("GAME v0.0.1", WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
@@ -36,8 +36,8 @@ int main(int argc, char* args[]) {
 
     SDL_Event event;
 
-    Utils::LTimer fps_timer;
-    Utils::LTimer cap_timer;
+    utils::LTimer fps_timer;
+    utils::LTimer cap_timer;
     std::stringstream time_text;
     int counted_frames = 0;
     fps_timer.Start();

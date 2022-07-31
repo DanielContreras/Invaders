@@ -1,6 +1,6 @@
 #include "utils.h"
 
-namespace Utils {
+namespace utils {
 
 LTimer::LTimer() {
   start_ticks_ = 0;
@@ -55,4 +55,4 @@ bool LTimer::IsStarted() { return started_; }
 
 bool LTimer::IsPaused() { return paused_ && started_; }
 
-}  // namespace Utils
+}  // namespace utils
