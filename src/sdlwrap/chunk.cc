@@ -17,7 +17,7 @@ Chunk::Chunk(const std::string& path) {
 
 Chunk::~Chunk() {
   Mix_FreeChunk(chunk_);
-  CORE_DEBUG("Chunk successfully destroyed");
+  CORE_DEBUG("Chunk successfully unloaded");
 }
 
 Mix_Chunk* Chunk::GetChunk() const { return chunk_; }

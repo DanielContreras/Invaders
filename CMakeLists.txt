@@ -9,7 +9,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/debug)
 
 # Set linker flags to a constant
 SET(GCC_COVERAGE_COMPILE_FLAGS "-m64 -g -Wall")
-SET(GCC_COVERAGE_LINK_FLAGS    "-lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer")
+SET(GCC_COVERAGE_LINK_FLAGS    "-lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf")
 
 # Add linker flag constants to cmake
  SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")

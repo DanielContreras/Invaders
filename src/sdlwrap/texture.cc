@@ -1,10 +1,10 @@
 #include "sdlwrap/texture.h"
-
-#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_error.h>
 #include <SDL2/SDL_render.h>
 
 #include "log.h"
 #include "sdlwrap/renderer.h"
+#include "sdlwrap/surface.h"
 
 namespace SDLWrap {
 
@@ -12,6 +12,16 @@ Texture::Texture(Renderer& renderer, const std::string& path) {
   texture_ = IMG_LoadTexture(renderer.GetRenderer(), path.c_str());
   if (texture_ == nullptr) {
     CORE_CRITICAL("Failed to load texture. Error: {1}", path.c_str(), IMG_GetError());
+    // TODO: Should throw an exception here and not allow application to continue running
+    return;
+  }
+  CORE_DEBUG("Texture successfully initialized");
+}
+
+Texture::Texture(Renderer& renderer, const Surface& surface) {
+  texture_ = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface.GetSurface());
+  if (texture_ == nullptr) {
+    CORE_CRITICAL("Failed to load texture. Error: {}", SDL_GetError());
     // TODO: Should throw an exception here and not allow application to continue running
     return;
   }

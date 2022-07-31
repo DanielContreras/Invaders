@@ -18,7 +18,7 @@ Music::Music(const std::string& path) {
 
 Music::~Music() {
   Mix_FreeMusic(music_);
-  CORE_DEBUG("Music successfully destroyed");
+  CORE_DEBUG("Music successfully unloaded");
 }
 
 Mix_Music* Music::GetMusic() const { return music_; }
