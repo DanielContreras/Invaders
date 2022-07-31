@@ -8,7 +8,10 @@ namespace SDLWrap {
 
 Window::Window(const char* title, int w, int h, Uint32 flags) : window_(nullptr) {
   window_ = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
-  if (window_ == nullptr) CORE_ERROR("Window failed to init. Error {}", SDL_GetError());
+  if (window_ == nullptr) {
+    CORE_CRITICAL("Window failed to init. Error {}", SDL_GetError());
+    // TODO: Should throw an exception here and not allow application to continue running
+  }
   CORE_DEBUG("Window successfully initialized");
 }
 

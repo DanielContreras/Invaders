@@ -5,7 +5,11 @@
 namespace SDLWrap {
 
 SDL::SDL(Uint32 flags) {
-  if (SDL_Init(flags) != 0) CORE_ERROR("SDL_Init has failed. Error: {}", SDL_GetError());
+  if (SDL_Init(flags) != 0) {
+    CORE_CRITICAL("SDL_Init has failed. Error: {}", SDL_GetError());
+    // TODO: Should throw an exception here and not allow application to continue running
+    return;
+  }
   CORE_DEBUG("SDL successfully initialized");
 }
 

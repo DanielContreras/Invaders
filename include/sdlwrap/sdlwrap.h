@@ -9,5 +9,6 @@
 
 // Renderer header files
 #include <sdlwrap/renderer.h>
+#include <sdlwrap/texture.h>
 
 #endif  // SDLWRAP_H_

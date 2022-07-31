@@ -3,15 +3,20 @@
 
 #include "log.h"
 #include "sdlwrap/sdlwrap.h"
+#include "sdlwrap/texture.h"
 #include "utils.h"
-#include "temp.h"
+
+const int WIDTH = 1920;
+const int HEIGHT = 1080;
 
 int main(int argc, char* args[]) {
   Poopy::Logger::Init();
   try {
     SDLWrap::SDL sdl(SDL_INIT_VIDEO);
-    SDLWrap::Window window("GAME v0.0.1", 1280, 720, SDL_WINDOW_SHOWN);
+    SDLWrap::Window window("GAME v0.0.1", WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     SDLWrap::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    SDLWrap::Texture bg(renderer, "res/gfx/bg.png");
+
     CORE_INFO("Window refresh rate: {}", window.GetRefreshRate());
 
     bool app_running = true;
@@ -30,7 +35,7 @@ int main(int argc, char* args[]) {
       }
       // Get our controls and events
       renderer.Clear();
-      renderer.Copy();
+      renderer.Copy(bg, SDL_Rect{0, 0, WIDTH, HEIGHT}, SDL_Rect{0, 0, WIDTH, HEIGHT});
       renderer.Present();
 
       dt.SetFrameTicks(SDL_GetTicks() - dt.GetStartTicks());
@@ -39,8 +44,8 @@ int main(int argc, char* args[]) {
       }
       // CORE_DEBUG("FPS: {}", dt.GetFPS() / 1000);
     }
-    return 0;
   } catch (std::exception& e) {
     std::cerr << e.what() << std::endl;
   }
+  return 0;
 }

@@ -3,9 +3,10 @@
 
 #include <SDL2/SDL.h>
 
-#include "sdlwrap/window.h"
-
 namespace SDLWrap {
+
+class Window;
+class Texture;
 
 class Renderer {
  public:
@@ -15,7 +16,7 @@ class Renderer {
   SDL_Renderer* GetRenderer() const;
 
   Renderer& Clear();
-  Renderer& Copy();
+  Renderer& Copy(Texture& texture, const SDL_Rect& src, const SDL_Rect& dst);
   Renderer& Present();
 
  private:
