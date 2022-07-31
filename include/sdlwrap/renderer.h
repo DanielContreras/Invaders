@@ -10,8 +10,8 @@ class Texture;
 
 class Renderer {
  public:
-  Renderer(Window& window, int index, Uint32 flags);
-  virtual ~Renderer();
+  Renderer(Window& window, int index, uint32_t flags);
+  ~Renderer();
 
   SDL_Renderer* GetRenderer() const;
 

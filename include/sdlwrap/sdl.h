@@ -7,8 +7,11 @@ namespace SDLWrap {
 
 class SDL {
  public:
-  SDL(Uint32 flags);
-  virtual ~SDL();
+  SDL(uint32_t flags);
+  ~SDL();
+
+  void InitSubsystems(uint32_t flags);
+  void QuitSubsystems(uint32_t flags);
 };
 
 }  // namespace SDLWrap

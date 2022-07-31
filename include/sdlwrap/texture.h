@@ -13,7 +13,7 @@ class Renderer;
 class Texture {
  public:
   Texture(Renderer& renderer, const std::string& path);
-  virtual ~Texture();
+  ~Texture();
 
   SDL_Texture* GetTexture() const;
 

@@ -7,8 +7,8 @@ namespace SDLWrap {
 
 class Window {
  public:
-  Window(const char* title, int w, int h, Uint32 flags);
-  virtual ~Window();
+  Window(const char* title, int w, int h, uint32_t flags);
+  ~Window();
 
   SDL_Window* GetWindow() const;
 
