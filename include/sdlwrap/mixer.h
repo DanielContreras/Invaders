@@ -28,8 +28,6 @@ class Mixer {
   void ResumeMusic();
   void RewindMUsic();
   void HaltMusic();
-
- private:
 };
 
 }  // namespace SDLWrap
