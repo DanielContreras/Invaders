@@ -40,6 +40,14 @@ Renderer& Renderer::Copy(Texture& texture, const SDL_Rect& src, const SDL_Rect& 
   return *this;
 }
 
+Renderer& Renderer::Copy(Texture& texture) {
+  if (SDL_RenderCopy(renderer_, texture.GetTexture(), nullptr, nullptr) != 0) {
+    CORE_CRITICAL("Failed to render. Error: {}", SDL_GetError());
+    // TODO: Should throw an exception here and not allow application to continue running
+  }
+  return *this;
+}
+
 Renderer& Renderer::Present() {
   SDL_RenderPresent(renderer_);
   return *this;

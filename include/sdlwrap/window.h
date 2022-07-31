@@ -13,6 +13,8 @@ class Window {
   SDL_Window* GetWindow() const;
 
   int GetRefreshRate();
+  int GetWidth() const;
+  int GetHeight() const;
 
  private:
   SDL_Window* window_;

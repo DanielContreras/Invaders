@@ -24,6 +24,18 @@ Window::~Window() {
 
 SDL_Window* Window::GetWindow() const { return window_; }
 
+int Window::GetWidth() const {
+  int width;
+  SDL_GetWindowSize(window_, &width, nullptr);
+  return width;
+}
+
+int Window::GetHeight() const {
+  int height;
+  SDL_GetWindowSize(window_, nullptr, &height);
+  return height;
+}
+
 int Window::GetRefreshRate() {
   int display_index = SDL_GetWindowDisplayIndex(window_);
 

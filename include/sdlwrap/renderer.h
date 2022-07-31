@@ -17,6 +17,7 @@ class Renderer {
 
   Renderer& Clear();
   Renderer& Copy(Texture& texture, const SDL_Rect& src, const SDL_Rect& dst);
+  Renderer& Copy(Texture& texture);
   Renderer& Present();
 
  private:
