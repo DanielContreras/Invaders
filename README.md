@@ -3,13 +3,14 @@ Simple "game" made using C++ and SDL2
 
 ## Getting started
 
-In order to install and build the project we will explore some packages you are going to need.
+In order to build the project it is necessary to install `SDL2_image` and `SDL2_mixer`. Additionally, this project at the moment only builds on Linux systems.
 
 ### Prerequisites
 
 - [CMake](https://cmake.org/download/)
 - [SDL2](https://www.libsdl.org/index.php)
 - [SDL2_image](https://github.com/libsdl-org/SDL_image)
+- [SDL2_mixer](https://github.com/libsdl-org/SDL_mixer)
 
 ### Installing and Building
 
