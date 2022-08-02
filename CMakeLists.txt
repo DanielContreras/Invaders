@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.23.2)  # CMake version check
-project(App)                            # Create project "SDL2-Game"
+project(SpaceInvaders)                  # Create project "Space Invaders"
 set(CMAKE_CXX_STANDARD 20)              # Enable c++20 standard
+
+# Look for spdlog package (has to be installed on system)
+if(NOT TARGET spdlog)
+    # Stand-alone build
+    find_package(spdlog REQUIRED)
+endif()
 
 # Set output directories
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -19,10 +25,13 @@ SET(GCC_COVERAGE_LINK_FLAGS    "-lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSD
 file(GLOB SOURCE_FILES "src/*.cc" "src/sdlwrap/*.cc")
 
 # Add header files (-I include)
-include_directories(include dep/spdlog/include)
+include_directories(include)
 
 # Add executable target
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} )
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+# Link spdlog pre-compiled library
+target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 
 # build to bin/debug
 install(TARGETS ${PROJECT_NAME} DESTINATION bin/debug)
