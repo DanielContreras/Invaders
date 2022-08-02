@@ -1,8 +1,11 @@
 #include "sdlwrap/texture.h"
+
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_surface.h>
 
 #include "log.h"
+#include "sdlwrap/font.h"
 #include "sdlwrap/renderer.h"
 #include "sdlwrap/surface.h"
 
@@ -31,6 +34,15 @@ Texture::Texture(Renderer& renderer, const Surface& surface) {
 Texture::~Texture() {
   if (texture_ != nullptr) SDL_DestroyTexture(texture_);
   CORE_DEBUG("Texture successfully destroyed");
+}
+
+// Texture& Texture::UpdateText(Renderer& renderer, Font& font, const char* text, SDL_Color& color) {
+Texture& Texture::UpdateText(Renderer& renderer, Font& font, std::string text, SDL_Color& color) {
+  texture_ = nullptr;
+  SDL_Surface* surface = TTF_RenderText_Solid(font.GetFont(), text.c_str(), color);
+  texture_ = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface);
+  SDL_FreeSurface(surface);
+  return *this;
 }
 
 SDL_Texture* Texture::GetTexture() const { return texture_; }

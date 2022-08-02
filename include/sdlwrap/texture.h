@@ -19,6 +19,7 @@ class Texture {
   Texture(Renderer& renderer, const Surface& surface);
   ~Texture();
 
+  Texture& UpdateText(Renderer& renderer, Font& font, std::string text, SDL_Color& color);
   SDL_Texture* GetTexture() const;
   int GetWidth() const;
   int GetHeight() const;
