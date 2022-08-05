@@ -2,8 +2,6 @@
 #define TEXTURE_H_
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
 
 #include <string>
 
@@ -23,7 +21,6 @@ class Texture {
   Texture& LoadFromFile(Renderer& renderer, const std::string& path);
   Texture& CreateFromSurface(Renderer& renderer, const Surface& surface);
   Texture& UpdateText(Renderer& renderer, Font& font, std::string text, SDL_Color& color);
-  // Texture& UpdateText(Renderer& renderer, Font& font, const char* text, SDL_Color& color);
   void Destroy();
   SDL_Texture* GetTexture() const;
   int GetWidth() const;

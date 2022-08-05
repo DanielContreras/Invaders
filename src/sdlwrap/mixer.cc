@@ -1,6 +1,5 @@
 #include "sdlwrap/mixer.h"
 
-#include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
 #include "log.h"

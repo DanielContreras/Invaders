@@ -1,7 +1,6 @@
 #ifndef CHUNK_H_
 #define CHUNK_H_
 
-#include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
 #include <string>

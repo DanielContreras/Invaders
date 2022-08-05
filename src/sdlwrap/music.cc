@@ -1,7 +1,5 @@
 #include "sdlwrap/music.h"
 
-#include <SDL2/SDL_mixer.h>
-
 #include "log.h"
 
 namespace SDLWrap {

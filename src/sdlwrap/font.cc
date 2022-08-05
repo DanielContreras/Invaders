@@ -1,8 +1,5 @@
 #include "sdlwrap/font.h"
 
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_ttf.h>
-
 #include "log.h"
 #include "sdlwrap/surface.h"
 

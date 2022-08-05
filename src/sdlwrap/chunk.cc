@@ -1,4 +1,3 @@
-#include <SDL2/SDL_mixer.h>
 #include <sdlwrap/chunk.h>
 
 #include "log.h"

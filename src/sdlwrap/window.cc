@@ -1,7 +1,5 @@
 #include "sdlwrap/window.h"
 
-#include <SDL2/SDL_error.h>
-
 #include "log.h"
 
 namespace SDLWrap {

@@ -1,7 +1,5 @@
 #include "sdlwrap/renderer.h"
 
-#include <SDL2/SDL_render.h>
-
 #include "log.h"
 #include "sdlwrap/texture.h"
 #include "sdlwrap/window.h"

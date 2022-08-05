@@ -9,13 +9,13 @@
 
 // Renderer header files
 #include <sdlwrap/renderer.h>
-#include <sdlwrap/texture.h>
 #include <sdlwrap/surface.h>
+#include <sdlwrap/texture.h>
 
 // Audio header files
+#include <sdlwrap/chunk.h>
 #include <sdlwrap/mixer.h>
 #include <sdlwrap/music.h>
-#include <sdlwrap/chunk.h>
 
 // SDL ttf
 #include <sdlwrap/font.h>

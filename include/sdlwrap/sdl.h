@@ -1,8 +1,7 @@
 #ifndef SDL_H_
 #define SDL_H_
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include <stdint.h>
 
 namespace SDLWrap {
 

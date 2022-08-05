@@ -1,8 +1,6 @@
 #include "sdlwrap/texture.h"
 
-#include <SDL2/SDL_error.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
+#include <SDL2/SDL_image.h>
 
 #include "log.h"
 #include "sdlwrap/font.h"
