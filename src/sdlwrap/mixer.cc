@@ -1,6 +1,10 @@
 #include "sdlwrap/mixer.h"
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+#include <SDL_mixer.h>
+#elif __linux__
 #include <SDL2/SDL_mixer.h>
+#endif
 
 #include "log.h"
 #include "sdlwrap/chunk.h"

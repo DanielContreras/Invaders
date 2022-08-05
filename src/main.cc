@@ -6,6 +6,13 @@
 #include "sdlwrap/sdlwrap.h"
 #include "utils.h"
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+#elif __linux__
+#else
+#   error "Unknown compiler"
+#endif
+
+
 using namespace SDLWrap;
 
 const int WIDTH = 224 * 4;

@@ -1,6 +1,10 @@
 #include "sdlwrap/texture.h"
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+#include <SDL_image.h>
+#elif __linux__
 #include <SDL2/SDL_image.h>
+#endif
 
 #include "log.h"
 #include "sdlwrap/font.h"
