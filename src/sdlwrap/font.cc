@@ -19,10 +19,21 @@ Font::Font(const std::string& path, int font_size, long index) {
 }
 
 Font::~Font() {
-  if (font_ != nullptr) { 
+  if (font_ != nullptr) {
     TTF_CloseFont(font_);
     CORE_DEBUG("Font successfully unloaded");
   }
+}
+
+bool Font::LoadFromFile(std::string path, int font_size, long index) {
+  font_ = TTF_OpenFontIndex(path.c_str(), font_size, index);
+  if (font_ == nullptr) {
+    CORE_ERROR("Failed to load font. Error: {}", TTF_GetError());
+    // TODO: Exception?
+    return 0;
+  }
+  CORE_DEBUG("Font was successfully loaded");
+  return 1;
 }
 
 TTF_Font* Font::GetFont() const { return font_; }

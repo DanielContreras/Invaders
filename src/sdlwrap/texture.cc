@@ -11,6 +11,8 @@
 
 namespace SDLWrap {
 
+Texture::Texture() { texture_ = nullptr; }
+
 Texture::Texture(Renderer& renderer, const std::string& path) {
   texture_ = IMG_LoadTexture(renderer.GetRenderer(), path.c_str());
   if (texture_ == nullptr) {
@@ -36,13 +38,38 @@ Texture::~Texture() {
   CORE_DEBUG("Texture successfully destroyed");
 }
 
-// Texture& Texture::UpdateText(Renderer& renderer, Font& font, const char* text, SDL_Color& color) {
-Texture& Texture::UpdateText(Renderer& renderer, Font& font, std::string text, SDL_Color& color) {
-  texture_ = nullptr;
-  SDL_Surface* surface = TTF_RenderText_Solid(font.GetFont(), text.c_str(), color);
-  texture_ = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface);
-  SDL_FreeSurface(surface);
+Texture& Texture::LoadFromFile(Renderer& renderer, const std::string& path) {
+  texture_ = IMG_LoadTexture(renderer.GetRenderer(), path.c_str());
+  if (texture_ == nullptr) {
+    CORE_CRITICAL("Failed to load texture. Error: {1}", path.c_str(), IMG_GetError());
+    // TODO: Should throw an exception here and not allow application to continue running
+  }
+  CORE_DEBUG("Texture successfully initialized");
   return *this;
+}
+
+Texture& Texture::CreateFromSurface(Renderer& renderer, const Surface& surface) {
+  texture_ = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface.GetSurface());
+  if (texture_ == nullptr) {
+    CORE_CRITICAL("Failed to load texture. Error: {}", SDL_GetError());
+    // TODO: Should throw an exception here and not allow application to continue running
+  }
+  CORE_DEBUG("Texture successfully initialized");
+  return *this;
+}
+
+// Texture& Texture::UpdateText(Renderer& renderer, Font& font, const char* text, SDL_Color& color)
+// {
+Texture& Texture::UpdateText(Renderer& renderer, Font& font, std::string text, SDL_Color& color) {
+  SDL_DestroyTexture(texture_);
+  Surface surface(TTF_RenderText_Solid(font.GetFont(), text.c_str(), color));
+  texture_ = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface.GetSurface());
+  return *this;
+}
+
+void Texture::Destroy() {
+  SDL_DestroyTexture(texture_);
+  CORE_DEBUG("Texture Destroyed!");
 }
 
 SDL_Texture* Texture::GetTexture() const { return texture_; }

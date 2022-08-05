@@ -16,6 +16,7 @@ class Font {
   Font(const std::string& path, int font_size, long index = 0);
   ~Font();
 
+  bool LoadFromFile(std::string path, int font_size, long index = 0);
   TTF_Font* GetFont() const;
   int GetStyle() const;
   Font& SetStyle(int style = TTF_STYLE_NORMAL);
