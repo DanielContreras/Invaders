@@ -17,21 +17,21 @@ class Renderer;
 class Surface;
 
 class Font {
- public:
+public:
   Font(const std::string& path, int font_size, long index = 0);
   ~Font();
 
-  bool LoadFromFile(std::string path, int font_size, long index = 0);
-  TTF_Font* GetFont() const;
-  int GetStyle() const;
-  Font& SetStyle(int style = TTF_STYLE_NORMAL);
-  Surface RenderText_Solid(const std::string& text, SDL_Color fg);
-  Surface RenderText_Blended(const std::string& text, SDL_Color fg);
+  bool load_from_file(std::string path, int font_size, long index = 0);
+  TTF_Font* get_font() const;
+  int get_style() const;
+  Font& set_style(int style = TTF_STYLE_NORMAL);
+  Surface render_text_solid(const std::string& text, SDL_Color fg);
+  Surface render_text_blended(const std::string& text, SDL_Color fg);
 
- private:
+private:
   TTF_Font* font_;
 };
 
-}  // namespace SDLWrap
+} // namespace SDLWrap
 
-#endif  // FONT_H_
+#endif // FONT_H_

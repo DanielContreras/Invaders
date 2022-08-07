@@ -1,31 +1,36 @@
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef UTILS_H_
+#define UTILS_H_
 
 #include <SDL2/SDL.h>
 
 namespace utils {
 
+const int width = 224 * 4;
+const int height = 256 * 4;
+const int screen_fps = 60;
+const int screen_tick_per_frame = 1000 / screen_fps;
+
 class LTimer {
- public:
+public:
   LTimer();
 
-  void Start();
-  void Stop();
-  void Pause();
-  void Unpause();
+  void start();
+  void stop();
+  void pause();
+  void unpause();
 
-  uint32_t GetTicks();
+  uint32_t get_ticks();
 
-  bool IsStarted();
-  bool IsPaused();
+  bool is_started();
+  bool is_paused();
 
- private:
+private:
   uint32_t start_ticks_;
   uint32_t paused_ticks_;
   bool paused_;
   bool started_;
 };
 
-}  // namespace utils
+} // namespace utils
 
-#endif  // UTILS_H
+#endif // UTILS_H_

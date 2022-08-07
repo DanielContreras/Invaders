@@ -16,17 +16,17 @@ namespace SDLWrap {
 class Renderer;
 
 class Surface {
- public:
+public:
   Surface(SDL_Surface* surface);
   Surface(const std::string& path);
   ~Surface();
 
-  SDL_Surface* GetSurface() const;
+  SDL_Surface* get_surface() const;
 
- private:
+private:
   SDL_Surface* surface_;
 };
 
-}  // namespace SDLWrap
+} // namespace SDLWrap
 
-#endif  // SURFACE_H_
+#endif // SURFACE_H_

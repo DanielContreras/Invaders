@@ -19,6 +19,6 @@ Chunk::~Chunk() {
   CORE_DEBUG("Chunk successfully unloaded");
 }
 
-Mix_Chunk* Chunk::GetChunk() const { return chunk_; }
+Mix_Chunk* Chunk::get_chunk() const { return chunk_; }
 
-}  // namespace SDLWrap
+} // namespace SDLWrap

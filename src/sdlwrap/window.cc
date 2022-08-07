@@ -20,21 +20,21 @@ Window::~Window() {
   }
 }
 
-SDL_Window* Window::GetWindow() const { return window_; }
+SDL_Window* Window::get_window() const { return window_; }
 
-int Window::GetWidth() const {
+int Window::get_width() const {
   int width;
   SDL_GetWindowSize(window_, &width, nullptr);
   return width;
 }
 
-int Window::GetHeight() const {
+int Window::get_height() const {
   int height;
   SDL_GetWindowSize(window_, nullptr, &height);
   return height;
 }
 
-int Window::GetRefreshRate() {
+int Window::get_refresh_rate() {
   int display_index = SDL_GetWindowDisplayIndex(window_);
 
   SDL_DisplayMode mode;
@@ -42,4 +42,4 @@ int Window::GetRefreshRate() {
   return mode.refresh_rate;
 }
 
-}  // namespace SDLWrap
+} // namespace SDLWrap

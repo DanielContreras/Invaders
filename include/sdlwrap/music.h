@@ -14,17 +14,17 @@
 namespace SDLWrap {
 
 class Music {
- public:
+public:
   Music(const std::string& path);
   ~Music();
 
-  Mix_Music* GetMusic() const;
-  Mix_MusicType GetType() const;
+  Mix_Music* get_music() const;
+  Mix_MusicType get_type() const;
 
- private:
+private:
   Mix_Music* music_ = nullptr;
 };
 
-}  // namespace SDLWrap
+} // namespace SDLWrap
 
-#endif  // MUSIC_H_
+#endif // MUSIC_H_

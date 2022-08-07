@@ -19,8 +19,8 @@ Music::~Music() {
   CORE_DEBUG("Music successfully unloaded");
 }
 
-Mix_Music* Music::GetMusic() const { return music_; }
+Mix_Music* Music::get_music() const { return music_; }
 
-Mix_MusicType Music::GetType() const { return Mix_GetMusicType(music_); }
+Mix_MusicType Music::get_type() const { return Mix_GetMusicType(music_); }
 
-}  // namespace SDLWrap
+} // namespace SDLWrap

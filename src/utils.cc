@@ -9,21 +9,21 @@ LTimer::LTimer() {
   started_ = false;
 }
 
-void LTimer::Start() {
+void LTimer::start() {
   started_ = true;
   paused_ = false;
   start_ticks_ = SDL_GetTicks();
   paused_ticks_ = 0;
 }
 
-void LTimer::Stop() {
+void LTimer::stop() {
   started_ = false;
   paused_ = false;
   start_ticks_ = 0;
   paused_ticks_ = 0;
 }
 
-void LTimer::Pause() {
+void LTimer::pause() {
   if (started_ && !paused_) {
     paused_ = true;
     paused_ticks_ = SDL_GetTicks() - start_ticks_;
@@ -31,7 +31,7 @@ void LTimer::Pause() {
   }
 }
 
-void LTimer::Unpause() {
+void LTimer::unpause() {
   if (started_ && paused_) {
     paused_ = false;
     start_ticks_ = SDL_GetTicks() - paused_ticks_;
@@ -39,7 +39,7 @@ void LTimer::Unpause() {
   }
 }
 
-uint32_t LTimer::GetTicks() {
+uint32_t LTimer::get_ticks() {
   uint32_t time = 0;
   if (started_) {
     if (paused_) {
@@ -51,8 +51,8 @@ uint32_t LTimer::GetTicks() {
   return time;
 }
 
-bool LTimer::IsStarted() { return started_; }
+bool LTimer::is_started() { return started_; }
 
-bool LTimer::IsPaused() { return paused_ && started_; }
+bool LTimer::is_paused() { return paused_ && started_; }
 
-}  // namespace utils
+} // namespace utils

@@ -24,9 +24,10 @@ Surface::Surface(const std::string& path) {
 }
 
 Surface::~Surface() {
-  if (surface_ != nullptr) SDL_FreeSurface(surface_);
+  if (surface_ != nullptr)
+    SDL_FreeSurface(surface_);
 }
 
-SDL_Surface* Surface::GetSurface() const { return surface_; }
+SDL_Surface* Surface::get_surface() const { return surface_; }
 
-}  // namespace SDLWrap
+} // namespace SDLWrap

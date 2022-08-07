@@ -1,7 +1,7 @@
 ---
 # We'll use defaults from the LLVM style, but with 4 columns indentation.
-BasedOnStyle: Google
-# IndentWidth: 2
+BasedOnStyle: LLVM
+IndentWidth: 2
 ColumnLimit: 100
 AlignConsecutiveMacros: true
 # AlignConsecutiveAssignments: true

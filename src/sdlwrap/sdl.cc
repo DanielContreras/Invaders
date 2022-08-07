@@ -1,8 +1,10 @@
 #include "sdlwrap/sdl.h"
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+#include <SDL.h>
 #include <SDL_ttf.h>
 #elif __linux__
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #endif
 
@@ -28,7 +30,7 @@ SDL::~SDL() {
   CORE_DEBUG("SDL successfully destroyed");
 }
 
-void SDL::InitTTF() {
+void SDL::init_TTF() {
   if (TTF_Init() != 0) {
     CORE_ERROR("TTF Failed to initialize. Error: {}", TTF_GetError());
     return;
@@ -37,7 +39,7 @@ void SDL::InitTTF() {
   CORE_DEBUG("SDL_TTF successfully iniitalized");
 }
 
-void SDL::InitSubsystems(uint32_t flags) {
+void SDL::init_subsystems(uint32_t flags) {
   if (SDL_InitSubSystem(flags) != 0) {
     CORE_CRITICAL("SDL has failed to init subsystems. Error: {}", SDL_GetError());
     return;
@@ -45,9 +47,9 @@ void SDL::InitSubsystems(uint32_t flags) {
   CORE_DEBUG("SDL has successfully initialized its subsystems");
 }
 
-void SDL::QuitSubsystems(uint32_t flags) {
+void SDL::quit_subsystems(uint32_t flags) {
   SDL_QuitSubSystem(flags);
   CORE_DEBUG("SDL has successfully destroyed the subsystems");
 }
 
-}  // namespace SDLWrap
+} // namespace SDLWrap

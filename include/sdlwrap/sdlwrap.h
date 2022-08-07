@@ -20,4 +20,4 @@
 // SDL ttf
 #include <sdlwrap/font.h>
 
-#endif  // SDLWRAP_H_
+#endif // SDLWRAP_H_

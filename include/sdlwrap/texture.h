@@ -18,30 +18,30 @@ class Surface;
 class Font;
 
 class Texture {
- public:
+public:
   Texture();
   Texture(Renderer& renderer, const std::string& path);
   Texture(Renderer& renderer, const Surface& surface);
   ~Texture();
 
-  Texture& LoadFromFile(Renderer& renderer, const std::string& path);
-  Texture& CreateFromSurface(Renderer& renderer, const Surface& surface);
-  Texture& UpdateText(Renderer& renderer, Font& font, std::string text, SDL_Color& color);
-  void Destroy();
-  SDL_Texture* GetTexture() const;
-  int GetWidth() const;
-  int GetHeight() const;
+  Texture& load_from_file(Renderer& renderer, const std::string& path);
+  Texture& create_from_surface(Renderer& renderer, const Surface& surface);
+  Texture& update_text(Renderer& renderer, Font& font, std::string text, SDL_Color& color);
+  void destroy();
+  SDL_Texture* get_texture() const;
+  int get_width() const;
+  int get_height() const;
 
-  void Lock();
-  void Unlock();
-  void* GetPixels();
-  void CopyPixels(void* pixels);
-  int GetPitch();
+  void lock();
+  void unlock();
+  void* get_pixels();
+  void copy_pixels(void* pixels);
+  int get_pitch();
 
- private:
+private:
   SDL_Texture* texture_;
 };
 
-}  // namespace SDLWrap
+} // namespace SDLWrap
 
-#endif  // TEXTURE_H_
+#endif // TEXTURE_H_

@@ -6,16 +6,16 @@
 namespace SDLWrap {
 
 class SDL {
- public:
+public:
   SDL(uint32_t flags);
   ~SDL();
 
-  void InitTTF();
+  void init_TTF();
 
-  void InitSubsystems(uint32_t flags);
-  void QuitSubsystems(uint32_t flags);
+  void init_subsystems(uint32_t flags);
+  void quit_subsystems(uint32_t flags);
 };
 
-}  // namespace SDLWrap
+} // namespace SDLWrap
 
-#endif  // SDL_H_
+#endif // SDL_H_

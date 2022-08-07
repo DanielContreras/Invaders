@@ -14,16 +14,16 @@
 namespace SDLWrap {
 
 class Chunk {
- public:
+public:
   Chunk(const std::string& path);
   ~Chunk();
 
-  Mix_Chunk* GetChunk() const;
+  Mix_Chunk* get_chunk() const;
 
- private:
+private:
   Mix_Chunk* chunk_;
 };
 
-}  // namespace SDLWrap
+} // namespace SDLWrap
 
-#endif  // CHUNK_H_
+#endif // CHUNK_H_

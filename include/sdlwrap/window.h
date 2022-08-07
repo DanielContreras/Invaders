@@ -12,20 +12,20 @@
 namespace SDLWrap {
 
 class Window {
- public:
+public:
   Window(const char* title, int w, int h, uint32_t flags);
   ~Window();
 
-  SDL_Window* GetWindow() const;
+  SDL_Window* get_window() const;
 
-  int GetRefreshRate();
-  int GetWidth() const;
-  int GetHeight() const;
+  int get_refresh_rate();
+  int get_width() const;
+  int get_height() const;
 
- private:
+private:
   SDL_Window* window_;
 };
 
-}  // namespace SDLWrap
+} // namespace SDLWrap
 
-#endif  // WINDOW_H_
+#endif // WINDOW_H_
