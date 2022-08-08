@@ -1,9 +1,10 @@
-# SDL2-Game
-Simple "game" made using C++ and SDL2
+# Space Invaders
+
+Space Invaders written in C++ using the SDL2 library. This game does not use any other game libraries or graphics libraries; SDL2 will do the majority of this work. As a result, we can compile and run the application cross-platform. At the moment the supported platforms are Windows and Linux, as long as you have the dependancies installed. 
 
 ## Getting started
 
-In order to build the project it is necessary to install `SDL2_image` and `SDL2_mixer`. Additionally, this project at the moment only builds on Linux systems.
+In the following steps we will go over the necessary programs required to build and run the project. 
 
 ### Prerequisites
 
@@ -11,24 +12,29 @@ In order to build the project it is necessary to install `SDL2_image` and `SDL2_
 - [SDL2](https://www.libsdl.org/index.php)
 - [SDL2_image](https://github.com/libsdl-org/SDL_image)
 - [SDL2_mixer](https://github.com/libsdl-org/SDL_mixer)
+- [SDL2_ttf](https://github.com/libsdl-org/SDL_ttf)
+- [spdlog](https://github.com/gabime/spdlog)
 
-### Installing and Building
+### Installing
 
 To begin installation, you first clone the git repository.
 ```shell
-git clone https://github.com/DanielContreras/SDL2-Game && cd SDL2-Game
+git clone https://github.com/DanielContreras/SpaceInvaders && cd SpaceInvaders
 ```
-After cloning we build the project
+
+### Building and Running
+After cloning, we build the project
 ```shell
 cmake -B build && build --build build/
 ```
-From here, anytime we wish to build the project going forward, we can simply run
+On Linux this will create an executable that can be found in the `build/bin/debug/` folder. Similarily, on Windows this will create the executable in `build/x64/Debug/`. The executable `SpaceInvaders` will be found in these respective directories. On Linux you can run the executable with
+
 ```shell
-cmake --build build/
+./build/bin/debug/SpaceInvaders
 ```
-This will create an executable that can be found in the `build/bin/debug` folder and will be called `App`. You can run the executable by running
+and on Windows,
 ```shell
-./build/bin/debug/App
+.\build\x64\Debug\SpaceInvaders
 ```
 
 ## License
