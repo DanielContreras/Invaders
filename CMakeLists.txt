@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23.2)  # CMake version check
 project(SpaceInvaders)                  # Create project "Space Invaders"
-set(CMAKE_CXX_STANDARD 11)              # Enable c++11 standard
+set(CMAKE_CXX_STANDARD 20)              # Enable c++20 standard
 
 # Look for spdlog package (has to be installed on system)
 if(NOT TARGET spdlog)
@@ -25,7 +25,7 @@ SET(GCC_COVERAGE_LINK_FLAGS    "-lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSD
 file(GLOB SOURCE_FILES "src/*.cc" "src/sdlwrap/*.cc")
 
 # Add header files (-I include)
-include_directories(include)
+include_directories(include dep/Eigen)
 
 # Add executable target
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
