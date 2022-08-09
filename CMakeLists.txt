@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23.2)  # CMake version check
 project(SpaceInvaders)                  # Create project "Space Invaders"
-set(CMAKE_CXX_STANDARD 20)              # Enable c++20 standard
+set(CMAKE_CXX_STANDARD 11)              # Enable c++11 standard
 
 # Look for spdlog package (has to be installed on system)
 if(NOT TARGET spdlog)
