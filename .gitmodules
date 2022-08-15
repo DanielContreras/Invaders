@@ -4,3 +4,6 @@
 [submodule "dep/Eigen"]
 	path = dep/Eigen
 	url = https://gitlab.com/libeigen/eigen.git
+[submodule "dep/cmake/sdl2"]
+	path = dep/cmake/sdl2
+	url = https://gitlab.com/aminosbh/sdl2-cmake-modules.git
