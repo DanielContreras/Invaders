@@ -3,17 +3,23 @@ project(SpaceInvaders) # Create project "Space Invaders"
 set(CMAKE_CXX_STANDARD 20) # Enable c++20 standard
 
 if(WIN32)
-  set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+  set(CMAKE_TOOLCHAIN_FILE
+      "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
 endif(WIN32)
 
-# Add SDL2 CMake modules
 if(UNIX)
+  # Add SDL2 CMake modules
   list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/dep/cmake/sdl2)
 endif(UNIX)
 
 # Add SDL2 library
 find_package(SDL2 REQUIRED)
-find_package(SDL2-image REQUIRED)
+if(WIN32)
+  find_package(SDL2-image REQUIRED)
+endif(WIN32)
+if(UNIX)
+  find_package(SDL2_image REQUIRED)
+endif(UNIX)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 
@@ -36,7 +42,7 @@ endif(UNIX)
 # Add linker flag constants to cmake
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS
-  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
+    "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
 # Add all .cc inside the src/ folder and sub-directories to ${SOURCE_FILES}
 file(GLOB_RECURSE SOURCE_FILES "src/*.cc")
@@ -55,8 +61,11 @@ if(WIN32)
     PRIVATE SDL2::SDL2
     PRIVATE SDL2::SDL2main
     PRIVATE SDL2::SDL2_image
-    PRIVATE $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static>
-    PRIVATE $<IF:$<TARGET_EXISTS:SDL2_mixer::SDL2_mixer>,SDL2_mixer::SDL2_mixer,SDL2_mixer::SDL2_mixer-static>)
+    PRIVATE
+      $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static>
+    PRIVATE
+      $<IF:$<TARGET_EXISTS:SDL2_mixer::SDL2_mixer>,SDL2_mixer::SDL2_mixer,SDL2_mixer::SDL2_mixer-static>
+  )
 elseif(UNIX)
   target_link_libraries(
     ${PROJECT_NAME}
