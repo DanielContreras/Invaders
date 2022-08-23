@@ -1,6 +1,3 @@
-[submodule "dep/spdlog"]
-	path = dep/spdlog
-	url = https://github.com/gabime/spdlog
 [submodule "dep/Eigen"]
 	path = dep/Eigen
 	url = https://gitlab.com/libeigen/eigen.git
