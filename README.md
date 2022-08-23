@@ -1,6 +1,6 @@
 # Space Invaders
 
-Space Invaders written in C++. For this project we use [SDL2](https://www.libsdl.org/) to handle the platform layer functions, such as audio and input, and also for rendering. This should allow the application to be built cross-platform. We also use [spdlog](https://github.com/gabime/spdlog) for logging and [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page) for a simple math library. 
+Space Invaders written in C++. For this project we use [SDL2](https://www.libsdl.org/) to handle the platform layer functions, such as audio and input. SDL2 will also handle the animations and rendering of the application. Using SDL2 allows the application to be built cross-platform with relative ease. We also use [spdlog](https://github.com/gabime/spdlog) for logging and [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page) for a simple math library. 
 
 ## Getting started
 
@@ -17,16 +17,20 @@ In the following steps we will go over the necessary programs required to build 
 
 ## Installation
 
-First, we download the project and install the git-submodules, with the following command.
+First, we download the project and install the git-submodules, with the following command
 ```shell
 git clone --recurse-submodules https://github.com/DanielContreras/SpaceInvaders && cd SpaceInvaders
+```
+If you cloned the repository without `recurse-submodules` you can run
+```shell
+git submodule init && git submodule update
 ```
 
 ## Building and Running on Linux
 
-The `CMakeLists.txt` file searches your system for `spdlog` and for `SDL2`; this means you should install the depencies mentioned in the prerequisite section using your distributions respective package manager. For more information on installing these dependencies please visit their respective github pages. 
+The `CMakeLists.txt` file searches your system for `spdlog` and for `SDL2`; this means you should install the dependencies mentioned in the prerequisite section using your distributions respective package manager. For more information on installing these dependencies please visit their respective github pages. 
 
-With your dependecies resolved you can continue on to creating the build directory. You can do this by running 
+With your dependencies resolved you can continue on to creating the build directory. You can do this by running 
 ```shell
 cmake -B build
 ```
@@ -38,11 +42,11 @@ And then to build the project we run
 ```shell
 cmake --build build/
 ```
-Similarily, if you need to clean the build files you can run
+Similarly, if you need to clean the build files you can run
 ```shell
 cmake --build build/ --target clean
 ```
-This will create an executable that can be found in the `build/bin/debug/` folder. You can run the program with
+After building, this creates an executable that can be found in the `build/bin/debug/` folder. You can run the program with
 
 ```shell
 ./build/bin/debug/SpaceInvaders
@@ -60,10 +64,14 @@ making sure to replace `[path to vcpkg]` with the actual path to this file. Next
 ```shell
 cmake --build build/
 ```
-This will create an executable which can be run by
+Similarly, if you need to clean the build files you can run
+```shell
+cmake --build build/ --target clean
+```
+After building, this creates an executable that can be found in the `/build/bin/debug/Debug/` folder. You can run the program with
 ```shell
 .\build\bin\debug\Debug\SpaceInvaders.exe 
 ```
 
 ## License
-This project is licensed under the MIT License - See the [License.md](https://github.com/DanielContreras/SDL2-Game/blob/main/LICENSE.md) file for details.
+This project is licensed under the MIT License - See the [License.md](https://github.com/DanielContreras/SDL2-Game/blob/main/LICENSE) file for details.
