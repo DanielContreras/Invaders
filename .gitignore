@@ -37,6 +37,8 @@ build/
 
 # builds
 Makefile
+vcpkg/
 
 # Environment files
 compile_commands.json
+.vscode
