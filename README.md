@@ -56,6 +56,19 @@ After building, this creates an executable that can be found in the `build/bin/d
 
 If you are on Windows it is recommended that you use the [vcpkg](https://vcpkg.io/en/index.html) package manager to easily install the prerequisite packages. For more information on installing packages and setting up `vcpkg`, please visit their [getting started](https://vcpkg.io/en/getting-started.html) page. The `CMakeLists.txt` file currently searches your system for the necessary libraries. If you do not plan on using `vcpkg` then you will need to re-configure the build files yourself. 
 
+Assuming you are using `vcpkg`, we begin by installing `vcpkg` from the project root directory
+```shell
+git clone https://github.com/Microsoft/vcpkg.git
+```
+Then we run the bootstrap script to build `vcpkg`
+```shell
+.\vcpkg\bootstrap-vcpkg.bat
+```
+Followed by installing the prerequisite packages necessary for building the project
+```shell
+.\vcpkg\vcpkg.exe install spdlog:x64-windows sdl2:x64-windows sdl2-ttf:x64-windows sdl2-image:x64-windows sdl2-mixer:x64-windows
+```
+
 Assuming you have installed the packages using `vcpkg` the next step is to build the project. To do this we first create the build files with
 ```shell
 cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=[path to vcpkg]/scripts/buildsystems/vcpkg.cmake 
