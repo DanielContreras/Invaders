@@ -1,6 +1,9 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include <memory>
+
+#include "systems/render_system.h"
 #include "core/coordinator.h"
 #include "sdlwrap/renderer.h"
 
@@ -14,14 +17,14 @@ public:
   void init();
 
   void handle_events(SDL_Event& event);
-  void update();
-  void render(Renderer& renderer);
+  void update(float dt);
 
   inline bool is_running() { return is_running_; }
 
 private:
   bool is_running_ = true;
   Coordinator coordinator_;
+  std::shared_ptr<RenderSystem> render_system_;
 };
 
 #endif // GAME_H_

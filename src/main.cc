@@ -37,8 +37,7 @@ int main(int argc, char* args[]) {
       if (avg_fps > 2000000)
         avg_fps = 0;
 
-      game.update();
-      game.render(renderer);
+      game.update(0.0f);
 
       ++counted_frames;
 
