@@ -1,6 +1,6 @@
-# Space Invaders
+# Invaders
 
-Space Invaders written in C++. For this project we use [SDL2](https://www.libsdl.org/) to handle the platform layer functions, such as audio and input. SDL2 will also handle the animations and rendering of the application. Using SDL2 allows the application to be built cross-platform with relative ease. We also use [spdlog](https://github.com/gabime/spdlog) for logging and [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page) for a simple math library. 
+Space Invaders like game written in C++. For this project we use [SDL2](https://www.libsdl.org/) to handle the platform layer functions, such as audio and input. SDL2 will also handle the animations and rendering of the application. Using SDL2 allows the application to be built cross-platform with relative ease. We also use [spdlog](https://github.com/gabime/spdlog) for logging and [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page) for a simple math library. 
 
 ## Getting started
 
