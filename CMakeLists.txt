@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1) # CMake version check
-project(SpaceInvaders) # Create project "Space Invaders"
+project(Invaders) # Create project "Invaders"
 set(CMAKE_CXX_STANDARD 20) # Enable c++20 standard
 
 if(WIN32)
